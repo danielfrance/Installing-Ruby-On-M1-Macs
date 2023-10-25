@@ -1,5 +1,6 @@
 # Installing-Ruby-On-M1-Macs
-A quick installation guide for navigating installation of Ruby on an M1 Mac
+So, you’ve got an M1 Mac and you’re ready to roll with Ruby. You might have hit a few bumps along the way, but worry not - we’ve all been there. This guide is all about getting you through the rough patches and straight to coding bliss on MacOS Sonoma.
+
 
 # Introduction
 Running Ruby on an M1 Mac can sometimes be a tricky affair, especially with the various dependencies and configurations needed for a successful installation. This guide is tailored to help you navigate through the installation process on MacOS Sonoma, highlighting common issues and providing straightforward solutions to get Ruby up and running on your machine.
@@ -22,14 +23,12 @@ linking shared-object ripper.bundle
 ld: warning: ignoring duplicate libraries: '-lruby.3.2'
 make: *** [build-ext] Error 2 ```
  
-If this resonates with your experience, you are in the right place.
+Seeing this on your terminal? You’re not alone. Let’s smash those errors together.
 
 ## Prerequisites
-For the purpose of this tutorial, we assume that you have Homebrew installed. If not, no worries, we will cover that as well. Start by upgrading Homebrew:
-
+I’m guessing you’ve got Homebrew somewhere on your machine. If not, no biggie - we’ll get to that. If it's already there, run the following command with an expected error:
 ```brew upgrade```
 
-This command might return an error like:
 ```
 Error: Cannot install in Homebrew on ARM processor in Intel default prefix (/usr/local)!
 ...```
@@ -37,8 +36,7 @@ Error: Cannot install in Homebrew on ARM processor in Intel default prefix (/usr
 This error is a common pitfall and a major reason for installation failures.
 
 ## Step 1: Update Xcode
-Ensure Xcode is up to date:
-
+First things first, let's make sure XCode is up-to-date
 ```xcode-select --install```
 
 ## Step 2: Install Homebrew
@@ -49,9 +47,14 @@ Ensure Xcode is up to date:
 5. Run the installer and disregard the pop-up command about the Homebrew path for now. We will address this in the next steps.
 
 ## Step 3: Install [rbenv](https://github.com/rbenv/rbenv) and [ruby-build](https://github.com/rbenv/ruby-build/wiki#suggested-build-environment)
-Now, install rbenv and other necessary tools:
+Now, install rbenv and other necessary tools.  `rbenv` is a Ruby version manager that allows us to run different versions of Ruby locally, globally, and at the application specific level.  `ruby-build` is a tool that downloads and compiles various versions of Ruby and helps us with dependency management
 
-```brew install rbenv ruby-build rbenv-gemset rbenv-vars```
+```
+brew install rbenv ruby-build rbenv-gemset rbenv-vars
+```
+
+## The Next Steps Are Important!! Don't gloss over them
+
 ### For Ruby 2.x - 3.0:
 ```
 brew install openssl@1.1 readline libyaml gmp
@@ -78,7 +81,8 @@ export PATH=/opt/homebrew/bin:$PATH
 eval "$(rbenv init -)" 
 ```
 
-This adjusts the Homebrew path for M1 Macs and configures the shell for rbenv. Ensure your `~/.zshrc` includes:
+We’re doing this because Homebrew’s got a new home in /opt/homebrew, and we need to let `rbenv` know where to look. Your `~/.zshrc` should look something like this:
+
 
 ```
 export PATH=/opt/homebrew/bin:$PATH
@@ -147,4 +151,4 @@ rbenv global <version>
 ```
 
 ### Conclusion
-This guide is designed to streamline the Ruby installation process on M1 Macs, ensuring you have a smooth experience. Feel free to reach out with questions or updates. Happy coding!
+I mainly wrote it for myself in case I run into this again but hopefully someone gets something out of this.
