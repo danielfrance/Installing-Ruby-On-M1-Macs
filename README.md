@@ -44,7 +44,8 @@ First things first, let's make sure XCode is up-to-date
 2. Click on the highlighted option for M1 Macs, which should direct you to their GitHub page.
 ![homebrew](https://github.com/danielfrance/Installing-Ruby-On-M1-Macs/assets/4622440/6c3b33a1-7ed7-4308-b8b5-cc642b85457d)
 4. Under assets, choose your preferred installer. The Homebrew-****.pkg option is recommended for its simplicity.
-5. Run the installer and disregard the pop-up command about the Homebrew path for now. We will address this in the next steps.
+5. Run the installer and disregard the pop-up command about the Homebrew path for now. We will address this in the following steps.
+6. Run `brew doctor` and get rid of the files it warns about.
 
 ## Step 3: Install [rbenv](https://github.com/rbenv/rbenv) and [ruby-build](https://github.com/rbenv/ruby-build/wiki#suggested-build-environment)
 Now, install rbenv and other necessary tools.  `rbenv` is a Ruby version manager that allows us to run different versions of Ruby locally, globally, and at the application specific level.  `ruby-build` is a tool that downloads and compiles various versions of Ruby and helps us with dependency management
@@ -95,7 +96,7 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
 eval "$(rbenv init -zsh)" 
 ```
 
-After updating, run `source ~/.zshrc`
+After updating, run `source ~/.zshrc` to reload your file and ensure the changes take place.  You can also run `brew config` and verify homebrew is using the freshly installed version on the `HOMEBREW_PREFIX` line.
 
 ### Step 5: Initialize rbenv
 Run:
@@ -103,7 +104,7 @@ Run:
 rbenv init 
 ``` 
 
-Then close and reopen your terminal window. Run the following to check your setup:
+You should follow the instructions that are logged. I've only seen to add `eval "$(rbenv init -)" ` to your `~/.zshrc` file (which we did in the step above) but if you see other instructions, please comment below. Then close and reopen your terminal window. Run the following to check your setup:
 
 ```
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-doctor | bash 
