@@ -40,7 +40,7 @@ First things first, let's make sure XCode is up-to-date
 ```xcode-select --install```
 
 ## Step 2: Install Homebrew
-1. Navigate to [Homebrew's website](brew.sh)	
+1. Navigate to [Homebrew's website](https://brew.sh/)	
 2. Click on the highlighted option for M1 Macs, which should direct you to their GitHub page.
 ![homebrew](https://github.com/danielfrance/Installing-Ruby-On-M1-Macs/assets/4622440/6c3b33a1-7ed7-4308-b8b5-cc642b85457d)
 4. Under assets, choose your preferred installer. The Homebrew-****.pkg option is recommended for its simplicity.
